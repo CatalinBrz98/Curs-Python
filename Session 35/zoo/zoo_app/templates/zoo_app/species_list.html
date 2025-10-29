@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+        </tr>
+        {% for species in species_list %}
+        <tr>
+            <td>{{ species.name }}</td>
+            <td>{{ species.category }}</td>
+            <td>{{ species.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
