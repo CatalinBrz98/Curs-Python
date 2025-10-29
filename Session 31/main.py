@@ -12,13 +12,13 @@ Base = declarative_base()
 
 
 class SpeciesModel(Base):
-    __tablename__ = "species"
+    __tablename__ = "zoo_app"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
     category: Mapped[str] = mapped_column(String(64))
     description: Mapped[str] = mapped_column(String(256), nullable=True)
-    animals: Mapped[List["AnimalModel"]] = relationship("AnimalModel", back_populates="species")
+    animals: Mapped[List["AnimalModel"]] = relationship("AnimalModel", back_populates="zoo_app")
 
     def __repr__(self):
         return f"Species('{self.name}', '{self.category}')"
@@ -30,7 +30,7 @@ class AnimalModel(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(64), nullable=False)
     birthday: Mapped[datetime] = mapped_column(TIMESTAMP, unique=True, nullable=False)
-    species_id: Mapped[int] = mapped_column(ForeignKey("species.id"), nullable=False)
+    species_id: Mapped[int] = mapped_column(ForeignKey("zoo_app.id"), nullable=False)
     species: Mapped["SpeciesModel"] = relationship("SpeciesModel", back_populates="animals")
     users: Mapped[List["UserModel"]] = relationship("UserModel", back_populates="animal")
 

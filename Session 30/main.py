@@ -9,7 +9,7 @@ Base = declarative_base()
 
 
 class SpeciesModel(Base):
-    __tablename__ = "species"
+    __tablename__ = "zoo_app"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)

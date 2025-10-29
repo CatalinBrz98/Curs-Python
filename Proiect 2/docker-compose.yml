@@ -2,7 +2,7 @@ name: library
 
 
 services:
-  api:
+  django_app:
     build: ./
     restart: always
     volumes:
